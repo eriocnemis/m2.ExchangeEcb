@@ -29,7 +29,7 @@ class Rate
     /**
      * Exchange rates
      *
-     * @var array
+     * @var float[]
      */
     protected $rates = [];
 
@@ -78,7 +78,7 @@ class Rate
     /**
      * Retrieve all rates
      *
-     * @return string[]
+     * @return float[]
      */
     public function getAllRates()
     {
@@ -115,7 +115,7 @@ class Rate
     {
         $this->rates = [];
         $response = $this->gateway->getResponse();
-        if ($response->isSuccessful()) {
+        if ($response->isSuccess()) {
             $this->decode($response->getBody());
         } else {
             $this->setError(true);
