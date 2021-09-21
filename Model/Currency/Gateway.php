@@ -6,9 +6,9 @@
 namespace Eriocnemis\ExchangeEcb\Model\Currency;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\HTTP\ZendClientFactory;
-use Magento\Framework\HTTP\ZendClient;
 use Magento\Store\Model\ScopeInterface;
+use Laminas\Http\Response;
+use Laminas\Http\Client;
 
 /**
  * Import gateway
@@ -23,11 +23,11 @@ class Gateway
     const ECB_URL = 'https://www.ecb.int/stats/eurofxref/eurofxref-daily.xml';
 
     /**
-     * Http client factory
+     * Http client
      *
-     * @var ZendClientFactory
+     * @var Client
      */
-    protected $httpClientFactory;
+    protected $httpClient;
 
     /**
      * Core scope config
@@ -40,44 +40,44 @@ class Gateway
      * Initialize gateway
      *
      * @param ScopeConfigInterface $scopeConfig
-     * @param ZendClientFactory $httpClientFactory
+     * @param Client $httpClient
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
-        ZendClientFactory $httpClientFactory
+        Client $httpClient
     ) {
         $this->scopeConfig = $scopeConfig;
-        $this->httpClientFactory = $httpClientFactory;
+        $this->httpClient = $httpClient;
     }
 
     /**
      * Retrieve service response
      *
-     * @return \Zend_Http_Response
+     * @return Response
      */
     public function getResponse()
     {
         return $this->getClient()->setUri(self::ECB_URL)
-            ->setConfig($this->getConfig())
-            ->request(\Zend_Http_Client::GET);
+            ->setOptions($this->getOptions())
+            ->send();
     }
 
     /**
      * Retrieve http client
      *
-     * @return ZendClient
+     * @return Client
      */
     protected function getClient()
     {
-        return $this->httpClientFactory->create();
+        return $this->httpClient;
     }
 
     /**
-     * Retrieve http client config
+     * Retrieve http client options
      *
-     * @return array
+     * @return mixed[]
      */
-    protected function getConfig()
+    protected function getOptions()
     {
         return [
             'timeout' => $this->scopeConfig->getValue(
