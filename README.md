@@ -10,7 +10,7 @@ Version | 2.0.* | 2.1.* | 2.2.* | 2.3.* | 2.4.*
 Magento Community | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Magento Enterprise | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 Magento Cloud | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-Extension version | [2.0.1](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.0.1.zip) | [2.1.1](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.1.1.zip) | [2.2.1](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.2.1.zip) | [2.3.1](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.3.1.zip) |[2.4.0](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.4.0.zip)
+Extension version | [2.0.2](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.0.2.zip) | [2.1.2](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.1.2.zip) | [2.2.2](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.2.2.zip) | [2.3.2](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.3.1.zip) |[2.4.2](https://github.com/eriocnemis/m2.ExchangeEcb/archive/2.4.2.zip)
 
 ## Install
 
