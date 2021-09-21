@@ -6,6 +6,7 @@
 namespace Eriocnemis\ExchangeEcb\Model\Currency;
 
 use Magento\Framework\Xml\Parser;
+use DOMXPath;
 
 /**
  * Rates container
@@ -29,7 +30,7 @@ class Rate
     /**
      * Exchange rates
      *
-     * @var array
+     * @var float[]
      */
     protected $rates = [];
 
@@ -78,7 +79,7 @@ class Rate
     /**
      * Retrieve all rates
      *
-     * @return string[]
+     * @return float[]
      */
     public function getAllRates()
     {
@@ -115,11 +116,12 @@ class Rate
     {
         $this->rates = [];
         $response = $this->gateway->getResponse();
-        if ($response->isSuccessful()) {
+        if ($response->isSuccess()) {
             $this->decode($response->getBody());
-        } else {
-            $this->setError(true);
+            return $this;
         }
+
+        $this->setError(true);
         return $this;
     }
 
@@ -134,15 +136,15 @@ class Rate
         $parser = $this->parser->loadXML($xml);
         $dom = $this->parser->getDom();
         if (null !== $dom) {
-            $xpath = new \DOMXPath($dom);
+            $xpath = new DOMXPath($dom);
             $xpath->registerNamespace('gesmes', 'http://www.gesmes.org/xml/2002-08-01');
             $xpath->registerNamespace('e', 'http://www.ecb.int/vocabulary/2002-08-01/eurofxref');
 
             foreach ($xpath->evaluate('/gesmes:Envelope/e:Cube/e:Cube/e:Cube') as $cube) {
                 $this->rates[$cube->getAttribute('currency')] = $cube->getAttribute('rate');
             }
-        } else {
-            $this->setError(true);
+            return;
         }
+        $this->setError(true);
     }
 }
