@@ -15,6 +15,7 @@ repos:
     rev: 1.0.8
     hooks:
     -   id: magento-phpcs
+        args: ["--autofix"]
     -   id: magento-phpmd
     -   id: magento-phpcpd
     -   id: magento-phpstan
