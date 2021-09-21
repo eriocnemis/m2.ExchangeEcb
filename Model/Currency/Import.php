@@ -54,7 +54,7 @@ class Import extends AbstractImport
     /**
      * Retrieve currency codes
      *
-     * @return array
+     * @return mixed[]
      */
     protected function _getCurrencyCodes()
     {
@@ -67,7 +67,7 @@ class Import extends AbstractImport
     /**
      * Retrieve default currency codes
      *
-     * @return array
+     * @return mixed[]
      */
     protected function _getDefaultCurrencyCodes()
     {
