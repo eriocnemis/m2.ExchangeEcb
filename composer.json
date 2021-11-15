@@ -2,7 +2,7 @@
     "name": "eriocnemis/module-exchange-ecb",
     "description": "The extension retrieves currency exchange rates from the European Central Bank.",
     "type": "magento2-module",
-    "version": "2.3.2",
+    "version": "2.3.3",
     "authors": [
         {
             "name": "Eriocnemis Team",
@@ -13,16 +13,17 @@
         "OSL-3.0"
     ],
     "require": {
+        "php": "~7.1.3||~7.2.0||~7.3.0||~7.4.0",
         "magento/framework": "102.0.*",
         "magento/module-directory": "100.3.*",
         "magento/module-store": "101.0.*"
     },
     "autoload": {
         "files": [
-            "registration.php"
+            "src/registration.php"
         ],
         "psr-4": {
-            "Eriocnemis\\ExchangeEcb\\": ""
+            "Eriocnemis\\ExchangeEcb\\": "src"
         }
     }
 }
