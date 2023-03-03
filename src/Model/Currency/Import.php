@@ -3,6 +3,8 @@
  * Copyright © Eriocnemis, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Eriocnemis\ExchangeEcb\Model\Currency;
 
 use Magento\Directory\Model\Currency\Import\AbstractImport;
@@ -14,25 +16,21 @@ use Magento\Directory\Model\CurrencyFactory;
 class Import extends AbstractImport
 {
     /**
-     * Currency rate
-     *
      * @var Rate
      */
-    protected $rate;
+    private $rate;
 
     /**
-     * Currency rate factory
-     *
      * @var RateFactory
      */
-    protected $rateFactory;
+    private $rateFactory;
 
     /**
      * Ecb base currency code
      *
      * @var string
      */
-    protected $baseCurrencyCode = 'EUR';
+    private $baseCurrencyCode = 'EUR';
 
     /**
      * Initialize import
