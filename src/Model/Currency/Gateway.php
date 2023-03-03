@@ -3,6 +3,8 @@
  * Copyright © Eriocnemis, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Eriocnemis\ExchangeEcb\Model\Currency;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -20,21 +22,17 @@ class Gateway
      *
      * @var string
      */
-    const ECB_URL = 'https://www.ecb.int/stats/eurofxref/eurofxref-daily.xml';
+    private const ECB_URL = 'https://www.ecb.int/stats/eurofxref/eurofxref-daily.xml';
 
     /**
-     * Http client
-     *
      * @var Client
      */
-    protected $httpClient;
+    private $httpClient;
 
     /**
-     * Core scope config
-     *
      * @var ScopeConfigInterface
      */
-    protected $scopeConfig;
+    private $scopeConfig;
 
     /**
      * Initialize gateway
@@ -67,7 +65,7 @@ class Gateway
      *
      * @return Client
      */
-    protected function getClient()
+    private function getClient()
     {
         return $this->httpClient;
     }
@@ -77,7 +75,7 @@ class Gateway
      *
      * @return mixed[]
      */
-    protected function getOptions()
+    private function getOptions()
     {
         return [
             'timeout' => $this->scopeConfig->getValue(

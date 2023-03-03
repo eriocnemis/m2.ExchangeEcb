@@ -3,6 +3,8 @@
  * Copyright © Eriocnemis, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Eriocnemis\ExchangeEcb\Model\Currency;
 
 use Magento\Framework\Xml\Parser;
@@ -14,32 +16,28 @@ use DOMXPath;
 class Rate
 {
     /**
-     * Core scope config
-     *
      * @var Gateway
      */
-    protected $gateway;
+    private $gateway;
 
     /**
-     * Xml parser
-     *
      * @var Parser
      */
-    protected $parser;
+    private $parser;
 
     /**
      * Exchange rates
      *
      * @var float[]
      */
-    protected $rates = [];
+    private $rates = [];
 
     /**
      * Exchange errors
      *
      * @var bool
      */
-    protected $error = false;
+    private $error = false;
 
     /**
      * Initialize import
